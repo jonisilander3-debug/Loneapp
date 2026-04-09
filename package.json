@@ -1,0 +1,16 @@
+{
+  "name": "loneapp",
+  "version": "1.0.0",
+  "description": "Lönehantering – hantera löner, projekt och anställda",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "better-sqlite3": "^11.7.0",
+    "connect-sqlite3": "^0.9.15",
+    "express": "^4.21.1",
+    "express-session": "^1.18.1"
+  }
+}

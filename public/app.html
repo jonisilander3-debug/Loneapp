@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Loneapp</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-brand">
+        <h2>Loneapp</h2>
+        <span id="userDisplay">–</span>
+      </div>
+      <nav class="sidebar-nav">
+        <div class="nav-section">Huvudmeny</div>
+        <div class="nav-item active" data-page="salary" id="nav-salary">
+          <span>&#128203;</span> Loneoversikt
+        </div>
+        <div class="nav-item admin-only" data-page="data-input" id="nav-data">
+          <span>&#128202;</span> Datainmatning
+        </div>
+        <div class="nav-item admin-only" data-page="employees" id="nav-employees">
+          <span>&#128101;</span> Anstallda
+        </div>
+        <div class="nav-item admin-only" data-page="projects" id="nav-projects">
+          <span>&#128193;</span> Projekt
+        </div>
+        <div class="nav-item admin-only" data-page="reader-projects" id="nav-reader-projects">
+          <span>&#128272;</span> Lasbehorigheter
+        </div>
+      </nav>
+      <div class="sidebar-footer">
+        <div id="roleDisplay"></div>
+        <button class="btn-ghost btn-sm" onclick="logout()">Logga ut</button>
+      </div>
+    </aside>
+
+    <!-- Main -->
+    <main class="main">
+      <div class="topbar">
+        <div class="topbar-title" id="pageTitle">Loneoversikt</div>
+        <div class="topbar-actions" id="topbarActions">
+          <!-- Dynamic actions per page -->
+        </div>
+      </div>
+      <div class="page-content" id="pageContent">
+        <!-- Dynamic page content -->
+      </div>
+    </main>
+  </div>
+
+  <!-- Toast container -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <!-- Modal container -->
+  <div id="modalRoot"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>

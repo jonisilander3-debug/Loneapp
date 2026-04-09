@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Logga in – Loneapp</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="login-body">
+  <div class="login-container">
+    <div class="login-card">
+      <div class="login-header">
+        <h1>Loneapp</h1>
+        <p>Logga in for att fortsatta</p>
+      </div>
+      <form id="loginForm">
+        <div class="form-group">
+          <label for="username">Användarnamn</label>
+          <input type="text" id="username" name="username" autocomplete="username" required autofocus>
+        </div>
+        <div class="form-group">
+          <label for="password">Lösenord</label>
+          <input type="password" id="password" name="password" autocomplete="current-password" required>
+        </div>
+        <div class="error-msg" id="errorMsg" style="display:none"></div>
+        <button type="submit" class="btn-primary btn-full">Logga in</button>
+      </form>
+    </div>
+  </div>
+  <script>
+    document.getElementById('loginForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+      const errorMsg = document.getElementById('errorMsg');
+      errorMsg.style.display = 'none';
+      try {
+        const res = await fetch('/api/login', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ username, password })
+        });
+        const data = await res.json();
+        if (data.ok) {
+          window.location.href = '/app.html';
+        } else {
+          errorMsg.textContent = data.error || 'Inloggning misslyckades';
+          errorMsg.style.display = 'block';
+        }
+      } catch (err) {
+        errorMsg.textContent = 'Kunde inte ansluta till servern';
+        errorMsg.style.display = 'block';
+      }
+    });
+  </script>
+</body>
+</html>
